@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar'
 import { HiArrowLeft } from "react-icons/hi2";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
+import Link from 'next/link';
 
 
 const roboto = Roboto({
@@ -36,13 +37,13 @@ export default function Home() {
             <Image src='/assets/images/Group_1.png' alt='Display Image' width={300} height={200} />
           </div>
           <div className=' text-center lg:text-left  pt-6 ' data-aos='fade-up'>
-            <h1 className='font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-600 to-50% to-slate-800 dark:from-slate-200/60 dark:to-50% dark:to-slate-200'>HEY I’M DANISH PATEL</h1>
-            <h3 className='uppercase md:leading-10 '>And I’m a <span className='text-[#08C3D1] ' data-aos='fade-up'>fullstack Developer</span></h3>
+            <h1 className='font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-600 to-50% to-slate-800 dark:from-slate-200/60 dark:to-50% dark:to-slate-200'>HEY I&apos;M DANISH PATEL</h1>
+            <h3 className='uppercase md:leading-10 '>And I&apos;m a <span className='text-[#08C3D1] ' data-aos='fade-up'>fullstack Developer</span></h3>
             <p className='lg:w-[47%] text-[#CBB6B7] transition duration-700 text-center lg:text-left'>An accomplished full-stack developer with an exceptional command of the MERN stack, demonstrating unwavering dedication to delivering high-quality solutions. </p>
             <div className='mt-8 flex justify-center lg:justify-start leading-10'>
-              <a href='https://drive.google.com/file/d/1F9fgIiz0CdTqQA06F0pd3_xzDpUJnNlg/view?usp=sharing' target='_blank' className=' py-1 px-3 rounded-xl border-2 border-[#08C3D1] transition-color duration-500 hover:bg-[#08C3D1] hover:-translate-y-3 hover:shadow-xl hover:shadow-[#546E7A]'>
+              <Link href='https://drive.google.com/file/d/1F9fgIiz0CdTqQA06F0pd3_xzDpUJnNlg/view?usp=sharing' target='_blank' className=' py-1 px-3 rounded-xl border-2 border-[#08C3D1] transition-color duration-500 hover:bg-[#08C3D1] hover:-translate-y-3 hover:shadow-xl hover:shadow-[#546E7A]'>
                 Get My Resume
-              </a>
+              </Link>
               {/* <HiArrowLeft color='#08C3D1' className='mt-4 mx-10 hover:-translate-x-4 ease-in-out duration-500' size={25} cursor='pointer' /> */}
             </div>
           </div>
@@ -198,7 +199,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full pt-16">
-          <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up'>Let's have a <span className='text-[#08c3d1]'>conversation</span></h3>
+          <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up'>Let&apos;s have a <span className='text-[#08c3d1]'>conversation</span></h3>
           <div className='grid place-items-center'>
             <div className="md:w-[50%] w-80 pt-16">
               <h6 className='px-2 py-1 text-2xl'>Full Name*</h6>

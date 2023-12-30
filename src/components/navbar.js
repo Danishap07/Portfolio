@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useTheme } from 'next-themes'
 import { FiMoon } from 'react-icons/fi'
 import { BsSun } from 'react-icons/bs'
+import Link from 'next/link'
 
 
 function Navbar() {
@@ -49,10 +50,10 @@ function Navbar() {
       </div>
       <div className='md:flex hidden space-x-16'>
         <ul className='space-x-12 flex lg:ml-96'>
-          <a href="/" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'><span className=''>Home</span></a>
-          <a href="#projects" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'>Project</a>
-          <a href="#skills" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'>Skills</a>
-          <a href="#contact" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'>Contact</a>
+          <Link href="/" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'><span className=''>Home</span></Link>
+          <Link href="#projects" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'>Project</Link>
+          <Link href="#skills" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'>Skills</Link>
+          <Link href="#contact" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'>Contact</Link>
           
         </ul>
         {theme === 'dark' ?
@@ -74,10 +75,10 @@ function Navbar() {
         {/* {
           navbar? */}
         <div  className={`right-2  bg-black/50 text-white transition-all duration-150  rounded-md w-full mt-12 z-10 ${navbar ? 'absolute' : 'hidden'}`}>
-          <a href="" className='block py-2 px-4 text-lg'>Home</a>
-          <a href="" className='block py-2 px-4 text-lg'>Project</a>
-          <a href="" className='block py-2 px-4 text-lg'>Skills</a>
-          <a href="" className='block py-2 px-4 text-lg'>Contact</a>
+          <Link href="" className='block py-2 px-4 text-lg'>Home</Link>
+          <Link href="" className='block py-2 px-4 text-lg'>Project</Link>
+          <Link href="" className='block py-2 px-4 text-lg'>Skills</Link>
+          <Link href="" className='block py-2 px-4 text-lg'>Contact</Link>
           <div className='py-2 px-4'>
           {theme === 'dark' ?
             <button onClick={() => setTheme('light')}>

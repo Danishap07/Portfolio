@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Inter, Roboto } from 'next/font/google'
 import Navbar from '@/components/navbar'
@@ -6,6 +6,8 @@ import { HiArrowLeft } from "react-icons/hi2";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import Link from 'next/link';
+import Horizontalcorousel from '@/components/horizontalCorousel';
+import { motion, useTransform, useScroll } from 'framer-motion'
 
 
 const roboto = Roboto({
@@ -19,7 +21,13 @@ export default function Home() {
     AOS.init({ duration: 1000 })
   }, [])
 
+  const targetRef = useRef(null)
 
+  const { scrollYProgress } = useScroll({
+      target: targetRef,
+  })
+
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-80%"])
 
 
 
@@ -27,7 +35,7 @@ export default function Home() {
 
   return (
     <main
-      className={` ${roboto.className} pb-10`}
+      className={` ${roboto.className} pb-10 scroll-smooth`}
     >
       {/* <Navbar/> */}
 
@@ -96,11 +104,33 @@ export default function Home() {
           <button className='border-2 border-[#08C3D1] rounded-full px-8 shadow-lg shadow-[#08c3d1] ' data-aos='fade-up'>IOS</button>
           <button className='border-2 border-[#08C3D1] rounded-full px-8 shadow-lg shadow-[#08c3d1] ' data-aos='fade-up'>MERN</button>
         </div>
-
-        <div className="mt-12 grid place-items-center ">
-          <Image src='/assets/images/krystal_research.png' className='rounded-xl' alt='Portfolio image' width={500} height={400} data-aos='fade-up' />
-
-        </div>
+        {/* <Horizontalcorousel /> */}
+        <section ref={targetRef} className='relative h-[300vh] w-auto' data-aos='fade-up'>
+            <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+                <motion.div style={{ x }} className="flex gap-4 scroll-smooth">
+                    <div  className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
+                        <h3></h3>
+                        <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
+                    </div>
+                    <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
+                        <h3></h3>
+                        <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
+                    </div>
+                    <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
+                        <h3></h3>
+                        <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
+                    </div>
+                    <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
+                        <h3></h3>
+                        <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
+                    </div>
+                    <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' data-aos='fade-up'>
+                        <h3></h3>
+                        <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
+                    </div>
+                </motion.div>
+            </div>
+        </section>
       </div>
       <div className="">
         <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos="fade-up">My <span className='text-[#08c3d1]'>Skillset</span></h3>

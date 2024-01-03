@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { Inter, Roboto } from 'next/font/google'
+import { Inter, Roboto, Bebas_Neue } from 'next/font/google'
 import Navbar from '@/components/navbar'
 import { HiArrowLeft } from "react-icons/hi2";
 import AOS from 'aos';
@@ -14,6 +14,10 @@ const roboto = Roboto({
   weight: '400',
   subsets: ['latin'],
 })
+const bebas_neue = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export default function Home() {
 
@@ -24,7 +28,7 @@ export default function Home() {
   const targetRef = useRef(null)
 
   const { scrollYProgress } = useScroll({
-      target: targetRef,
+    target: targetRef,
   })
 
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-80%"])
@@ -35,7 +39,7 @@ export default function Home() {
 
   return (
     <main
-      className={` ${roboto.className} pb-10 scroll-smooth`}
+      className={` ${roboto.className} pb-10 `}
     >
       {/* <Navbar/> */}
 
@@ -106,17 +110,31 @@ export default function Home() {
         </div>
         {/* <Horizontalcorousel /> */}
         <section ref={targetRef} className='relative h-[300vh] w-auto' data-aos='fade-up'>
-            <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-                <motion.div style={{ x }} className="flex gap-4 scroll-smooth">
-                    <div  className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
-                        <h3></h3>
-                        <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
-                    </div>
-                    <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
-                        <h3></h3>
-                        <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
-                    </div>
-                    <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
+          <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+            <motion.div style={{ x }} className="flex gap-4 scroll-smooth">
+              <div className='group relative h-screen w-screen overflow-hidden bg-gradient-to-b from-[#D9D9D9] to-[#ffffff]' >
+                <div className='md:flex md:justify-around'>
+                  <div className='px-8 md:my-32 align-bottom text-black mx-10 mt-6'>
+                    <h3 className={` font-bold text-4xl text-[#1c2155] uppercase`}>Shopper Bee&apos;s</h3>
+                    <h4 className={`font-bold text-2xl text-[#141414]`}>E-commerce Website</h4>
+                    <p className={` text-[#141414] text-xl font-semibold mt-4`}>Redesigned Shopper Bee’s e-commerce website to enhance user experience and boost online sales. Focused on improving navigation, product discovery, and checkout process while maintaining brand consistency.</p>
+                  </div>
+                  <Image src='/assets/images/shopperbees_mockup.png' className='ml-2 mt-6 rounded-xl' alt='Portfolio image' width={700} height={400} />
+                </div>
+              </div>
+              <div className='group relative h-screen w-screen overflow-hidden bg-gradient-to-t from-[#ffffff] via-[#8bdada] to-[#5bdcdc] ' >
+                <div className='md:flex md:justify-around'>
+                  <div className='w-[50%] px-8 md:my-32 align-bottom text-black text-center'>
+                    <h3 className='font-bold text-2xl text-[#1c2155]'>Krystal Research Solutions</h3>
+                    {/* <h4 className='font-bold pt-5 text-2xl text-[#0e0e0e]'>Development of a Dynamic Research Marketing Website.</h4> */}
+                    <p className='text-[#0e0e0e] font-semibold text-xl mt-4 md:mx-10'>Empowering Qualitative and Quantitative Healthcare Market Research Services with a Rigorously Authenticated Panel.</p>
+                  </div>
+                  <div className='h-screen w-[50%]'>
+                  <Image src='/assets/images/krystal_mockup.png' className='m-auto p-auto  rounded-xl' alt='Portfolio image' width={550} height={400} />
+                  </div>
+                </div>
+              </div>
+              {/* <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' >
                         <h3></h3>
                         <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
                     </div>
@@ -127,9 +145,9 @@ export default function Home() {
                     <div className='group relative h-screen w-screen overflow-hidden bg-neutral-200' data-aos='fade-up'>
                         <h3></h3>
                         <Image src='/assets/images/shopperbees_mockup.png' className='rounded-xl' alt='Portfolio image' width={700} height={400} />
-                    </div>
-                </motion.div>
-            </div>
+                    </div> */}
+            </motion.div>
+          </div>
         </section>
       </div>
       <div className="">
@@ -229,7 +247,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full pt-16">
-          <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up'>Let&apos;s have a <span className='text-[#08c3d1]'>conversation</span></h3>
+          <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up'>Let&apos;s <span className='text-[#08c3d1]'>Connect</span></h3>
           <div className='grid place-items-center'>
             <div className="md:w-[50%] w-80 pt-16">
               <h6 className='px-2 py-1 text-2xl'>Full Name*</h6>

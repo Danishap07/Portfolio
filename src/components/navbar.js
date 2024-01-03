@@ -3,6 +3,7 @@ import { useTheme } from 'next-themes'
 import { FiMoon } from 'react-icons/fi'
 import { BsSun } from 'react-icons/bs'
 import Link from 'next/link'
+import Image from 'next/image'
 
 
 function Navbar() {
@@ -44,11 +45,13 @@ function Navbar() {
   
   // console.log(theme)
   return (
-    <div className={`flex w-full sm:justify-between py-4 px-4  dark:text-white dark:bg-black bg-gradient-to-t from-[#fcfbfb] via-[#ffffff] to-[#ffffff] dark:from-[#000000] dark:to-black `}>
-      <div className='heading md:ml-24'>
-        <p className='text-2xl'>Portfolio.</p>
+    <div className={`flex w-full sm:justify-between px-4 py-2  dark:text-white dark:bg-black bg-gradient-to-t from-[#fcfbfb] via-[#ffffff] to-[#ffffff] dark:from-[#000000] dark:to-black `}>
+      <div className='heading md:ml-24 flex gap-2'>
+      <Image className='dark:hidden pt-2' src={'/assets/logos/Vector2.png'} width={35} height={10} alt='logo'/>
+        <Image className='dark:block hidden pt-2' src={'/assets/logos/Vector1.png'} width={35} height={10} alt='logo'/>
+        {/* <p className='text-2xl'>Portfolio.</p> */}
       </div>
-      <div className='md:flex hidden space-x-16'>
+      <div className='md:flex hidden space-x-16 py-4'>
         <ul className='space-x-12 flex lg:ml-96'>
           <Link href="/" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'><span className=''>Home</span></Link>
           <Link href="#projects" className='text-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300'>Project</Link>

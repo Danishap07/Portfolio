@@ -45,7 +45,7 @@ function Navbar() {
   
   // console.log(theme)
   return (
-    <div className={`flex w-full sm:justify-between px-4 py-2  dark:text-white dark:bg-black bg-gradient-to-t from-[#fcfbfb] via-[#ffffff] to-[#ffffff] dark:from-[#000000] dark:to-black `}>
+    <div className={`flex w-full sm:justify-between px-4 py-2  top-0 dark:text-white dark:bg-black bg-gradient-to-t from-[#fcfbfb] via-[#ffffff] to-[#ffffff] dark:from-[#000000] dark:to-black `}>
       <div className='heading md:ml-24 flex gap-2'>
       <Image className='dark:hidden pt-2' src={'/assets/logos/Vector2.png'} width={35} height={10} alt='logo'/>
         <Image className='dark:block hidden pt-2' src={'/assets/logos/Vector1.png'} width={35} height={10} alt='logo'/>

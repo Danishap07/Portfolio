@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
   html {
     @apply scroll-smooth;
   }
-}
+} */
 /* @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap'); */
 /* 
 :root {

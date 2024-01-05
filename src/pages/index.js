@@ -8,8 +8,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'
 import Link from 'next/link';
 import Horizontalcorousel from '@/components/horizontalCorousel';
-import { motion, useTransform, useScroll } from 'framer-motion'
+import { motion, useTransform, useScroll, useSpring } from 'framer-motion'
 import AnimatedText from '@/components/animatedText'
+import SmoothScroll from '@/components/smoothScroll'
+import axios from 'axios'
 
 
 const roboto = Roboto({
@@ -23,27 +25,83 @@ const bebas_neue = Bebas_Neue({
 
 export default function Home() {
 
+  const targetRef = useRef(null)
+
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail]  = useState("");
+  const [message, setMessage] = useState("");
+  const [errFullname, setErrFullname] = useState("");
+  const [errEmail, setErrEmail] = useState("");
+  const [errMessage, setErrMessage] = useState("");
+
   useEffect(() => {
     AOS.init({ duration: 1000 })
   }, [])
 
-  const targetRef = useRef(null)
-
+  
   const { scrollYProgress } = useScroll({
     target: targetRef,
   })
 
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-67%"])
 
+  const handleContact = async () => {
+    // e.preventDefault()
+    setErrFullname("");
+    setErrEmail("");
+    setErrMessage("");
+    var formIsValid = true;
+
+    if(!fullname) {
+      setErrFullname("Fullname is required.")
+      return formIsValid = false;
+    }
+    if(fullname.length < 3) {
+      setErrFullname("Please enter a valid fullname.");
+      return formIsValid = false;
+    }
+    if(!email) {
+      setErrEmail("Email is required.");
+      return formIsValid = false;
+    }
+    if(!message) {
+      setErrMessage("Please enter a message.");
+      return formIsValid = false;
+    }
+
+    const passData = {
+      fullname: fullname,
+      email: email,
+      message: message
+    }
+
+    const res = await axios.post("https://authentication-system-tz0c.onrender.com/api/contact", passData, {
+     Hearders: { "Content-Type": "application/json" }
+    })
+    if(res.status) {
+      console.log(res)
+      setFullname("");
+      setEmail("");
+      setMessage("");
+    }
+    else{
+      console.log(res)
+    }
+
+  }
+  
   return (
     <>
       <Head>
         <title>Portfolio || Danish Patel</title>
         <link rel="icon" href="/assets/logos/logo.png" />
       </Head>
+      {/* <SmoothScroll> */}
       <main
-        className={` ${roboto.className} pb-10 `}
-      >
+        className={` ${roboto.className} pb-10 ` }
+        // style={smoothProgress}
+        // ref={contentRef}
+        >
         {/* <Navbar/> */}
 
 
@@ -86,21 +144,21 @@ export default function Home() {
           <div className="flex flex-wrap justify-center md:justify-around mt-8" >
             <div className='max-w-sm px-6 items-center' >
               <div className=" flex justify-center" data-aos="fade-up">
-                <Image src='/assets/images/reactNativeImg.png' alt='react-native image' width={300} height={300} />
+                <Image src='/assets/img/MERN_img.png' alt='react-native image' width={300} height={300} />
               </div>
               <h3 className='uppercase text-center font-semibold' data-aos="fade-up">React native developer</h3>
               <p className='text-[#CBB6B7] text-center pt-4 ' data-aos="fade-up">Specializes in building Android Applications using the React Native. Develops reusable components, manages state, and integrates with backend services</p>
             </div>
             <div className='max-w-sm px-6' >
               <div className="flex justify-center" data-aos="fade-up">
-                <Image src='/assets/images/MERNImg.png' alt='react-native image' width={300} height={300} />
+                <Image src='/assets/img/designer_img.png' alt='react-native image' width={300} height={300} />
               </div>
               <h3 className='uppercase text-center font-semibold' data-aos="fade-up">MERN Stack Developer</h3>
               <p className='text-[#CBB6B7] text-center pt-4' data-aos="fade-up">Develops full-stack web applications using the MERN (MongoDB, Express, React, Node.js) stack. Manages databases, server, and client-side logic.</p>
             </div>
             <div className='max-w-sm px-6' >
               <div className="flex justify-center" data-aos="fade-up">
-                <Image src='/assets/images/webDesigner.png' alt='react-native image' width={300} height={300} />
+                <Image src='/assets/img/reactnative_img.png' alt='react-native image' width={300} height={300} />
               </div>
               <h3 className='uppercase text-center' data-aos="fade-up">Web Designer</h3>
               <p className='text-[#CBB6B7] text-center pt-4' data-aos="fade-up">Creates visually appealing and user-friendly web designs. Works closely with frontend developers to ensure designs are implemented effectively.</p>
@@ -121,14 +179,15 @@ export default function Home() {
           <section ref={targetRef} className='relative h-[300vh] w-auto' data-aos='fade-up'>
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
               <motion.div style={{ x }} className="flex gap-4 scroll-smooth">
-                <div className='group relative h-screen w-screen overflow-hidden bg-gradient-to-b from-[#D9D9D9] to-[#ffffff]' >
+                <div className='group relative h-screen w-screen overflow-hidden bg-gradient-to-b from-[#EBB23B] to-[#ffffff]' >
                   <div className='md:flex md:justify-around'>
+                    <Image src='/assets/images/shopperbees_mockup.png' className='ml-2 mt-6 rounded-xl' alt='Portfolio image' width={700} height={400} />
                     <div className='px-8 md:my-32 align-bottom text-black md:mx-10 mt-6'>
                       <h3 className={` font-bold text-3xl text-[#1c2155] uppercase`}>Shopper Bee&apos;s</h3>
                       <h4 className={`font-bold text-2xl text-[#141414]`}>E-commerce Website</h4>
                       <p className={` text-[#141414] text-xl font-semibold mt-4`}>Redesigned Shopper Bee’s e-commerce website to enhance user experience and boost online sales. Focused on improving navigation, product discovery, and checkout process while maintaining brand consistency.</p>
                     </div>
-                    <Image src='/assets/images/shopperbees_mockup.png' className='ml-2 mt-6 rounded-xl' alt='Portfolio image' width={700} height={400} />
+
                   </div>
                 </div>
                 <div className='group relative h-screen w-screen overflow-hidden bg-gradient-to-t from-[#ffffff] via-[#8bdada] to-[#5bdcdc] ' >
@@ -263,20 +322,48 @@ export default function Home() {
           <div className="w-full pt-16">
             <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up'>Let&apos;s <span className='text-[#08c3d1]'>Connect</span></h3>
             <div className='grid place-items-center'>
+
               <div className="md:w-[50%] w-80 pt-16">
                 <h6 className='px-2 py-1 text-2xl'>Full Name*</h6>
-                <input type="text" placeholder='Enter your full name' className='w-[100%] py-2 px-2 border-2 border-[#08c3d1] focus:outline-none focus:ring focus:ring-[#08c3d1] rounded-xl dark:bg-gradient-to-t from-[#08C3D1]  via-[#c7c7c7] to-[#ffffff] dark:via-[#20232C]' />
+                <input 
+                  type="text" 
+                  placeholder='Enter your full name' 
+                  className='w-[100%] py-2 px-2 border-2 border-[#08c3d1] focus:outline-none focus:ring focus:ring-[#08c3d1] rounded-xl  from-[#08C3D1]  via-[#c7c7c7] to-[#ffffff] dark:via-[#20232C]'
+                  value={fullname} 
+                  onChange={(e) => setFullname(e.target.value)} 
+                />
+                <h6 className='text-xl font-normal text-red-500'>{errFullname}</h6>
               </div>
+
               <div className="md:w-[50%] w-80 pt-6">
                 <h6 className='px-2 py-1 text-2xl'>Email*</h6>
-                <input type="text" placeholder='Enter your Email' className='w-[100%] py-2 px-2 border-2 border-[#08c3d1] focus:outline-none focus:ring focus:ring-[#08c3d1] rounded-xl dark:bg-gradient-to-t from-[#08C3D1]  via-[#c7c7c7] to-[#ffffff] dark:via-[#20232C]' />
+                <input 
+                  type="text" 
+                  placeholder='Enter your Email' 
+                  className='w-[100%] py-2 px-2 border-2 border-[#08c3d1] focus:outline-none focus:ring focus:ring-[#08c3d1] rounded-xl  from-[#08C3D1]  via-[#c7c7c7] to-[#ffffff] dark:via-[#20232C]' 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <h6 className='text-xl font-normal text-red-500'>{errEmail}</h6>
               </div>
+
               <div className="md:w-[50%] w-80 pt-6">
                 <h6 className='px-2 py-1 text-2xl'>Message*</h6>
-                <textarea rows='5' placeholder='Enter your Message' className='w-[100%] py-2 px-2 border-2 border-[#08c3d1] focus:outline-none focus:ring focus:ring-[#08c3d1] rounded-xl dark:bg-gradient-to-t from-[#08C3D1]  via-[#c7c7c7] to-[#ffffff] dark:via-[#20232C]' />
+                <textarea 
+                  rows='5' 
+                  placeholder='Enter your Message' 
+                  className='w-[100%] py-2 px-2 border-2 border-[#08c3d1] focus:outline-none focus:ring focus:ring-[#08c3d1] rounded-xl  from-[#08C3D1]  via-[#c7c7c7] to-[#ffffff] dark:via-[#20232C]' 
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)} 
+                />
+                <h6 className='text-xl font-normal text-red-500'>{errMessage}</h6>
               </div>
+
               <div className='mt-8 flex justify-center lg:justify-start leading-10'>
-                <button className='py-1 px-10 rounded-xl border-2 border-[#08C3D1] transition-color duration-500 hover:bg-[#08C3D1] hover:-translate-y-3 hover:shadow-xl hover:shadow-[#546E7A]'>
+                <button 
+                  className='py-1 px-10 rounded-xl border-2 border-[#08C3D1] transition-color duration-500 hover:bg-[#08C3D1] hover:-translate-y-3 hover:shadow-xl hover:shadow-[#546E7A]' 
+                  onClick={() => handleContact()} 
+                >
                   Send
                 </button>
               </div>
@@ -285,6 +372,7 @@ export default function Home() {
         </div>
 
       </main>
+      {/* </SmoothScroll> */}
     </>
   )
 }

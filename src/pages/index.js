@@ -97,6 +97,7 @@ export default function Home() {
         <link rel="icon" href="/assets/logos/logo.png" />
       </Head>
       {/* <SmoothScroll> */}
+      <Navbar />
       <main
         className={` ${roboto.className} pb-10 ` }
         // style={smoothProgress}
@@ -167,8 +168,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full pt-16">
-          <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up'>My Creative <span className='text-[#08c3d1]'>Portfolio</span> section</h3>
+        <div className="w-full pt-16" >
+          <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up' >My Creative <span className='text-[#08c3d1]'>Portfolio</span> section</h3>
           <div className='w-screen overflow-scroll md:overflow-hidden flex space-x-4 md:space-x-10 px-4 my-6 py-10 sm:justify-center'>
             <button className='border-2 border-[#08C3D1] rounded-full px-8 shadow-lg shadow-[#08c3d1] ' data-aos='fade-up'>React</button>
             <button className='border-2 border-[#08C3D1] rounded-full px-8 shadow-lg shadow-[#08c3d1] ' data-aos='fade-up'>Android</button>
@@ -176,7 +177,7 @@ export default function Home() {
             <button className='border-2 border-[#08C3D1] rounded-full px-8 shadow-lg shadow-[#08c3d1] ' data-aos='fade-up'>MERN</button>
           </div>
           {/* <Horizontalcorousel /> */}
-          <section ref={targetRef} className='relative h-[300vh] w-auto' data-aos='fade-up'>
+          <section ref={targetRef} className='relative h-[300vh] w-auto' data-aos='fade-up' id='projects'>
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
               <motion.div style={{ x }} className="flex gap-4 scroll-smooth">
                 <div className='group relative h-screen w-screen overflow-hidden bg-gradient-to-b from-[#EBB23B] to-[#ffffff]' >
@@ -223,7 +224,7 @@ export default function Home() {
             </div>
           </section>
         </div>
-        <div className="">
+        <div className="" id='skills'>
           <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos="fade-up">My <span className='text-[#08c3d1]'>Skillset</span></h3>
           <div className='pt-8'>
             <h4 className='text-[#CBB6B7] text-center font-semibold' data-aos="fade-up">CORE LANGUAGES</h4>
@@ -266,7 +267,7 @@ export default function Home() {
                   <h5 className='text-center pt-3'>React</h5>
                 </div>
                 <div className='mt-8 '>
-                  <Image src='/assets/images/nextjs.png' alt='nextjs image' width={75} height={75} />
+                  <Image className='bg-white overflow-hidden rounded-full border border-white' src='/assets/images/nextjs.png' alt='nextjs image' width={76} height={76} />
                   <h5 className='text-center pt-3'>NextJs</h5>
                 </div>
                 <div className='mt-8 '>
@@ -295,7 +296,7 @@ export default function Home() {
               <h4 className='text-[#CBB6B7] text-center uppercase font-semibold' data-aos="fade-up">backend technologies</h4>
               <div className="flex justify-center px-4 pt-8 md:space-x-28 space-x-12" data-aos="fade-up">
                 <div className=''>
-                  <Image src='/assets/images/nodejs.png' alt='nodejs image' width={75} height={75} />
+                  <Image className="rounded-full m-0 p-0 transition scale-105" src='/assets/img/nodejs_img.png' alt='nodejs image' width={75} height={75} />
                   <h5 className='text-center pt-3'>NodeJs</h5>
                 </div>
                 <div className=''>
@@ -308,7 +309,7 @@ export default function Home() {
                 <h4 className='text-[#CBB6B7] text-center uppercase font-semibold' data-aos="fade-up">Databases</h4>
                 <div className="flex justify-center px-4 pt-8 md:space-x-28 space-x-12" data-aos="fade-up">
                   <div className=''>
-                    <Image src='/assets/images/mongoDB.png' alt='mongoDB image' width={75} height={75} />
+                    <Image src='/assets/img/mongoDB_img.webp' alt='mongoDB image' width={75} height={75} />
                     <h5 className='text-center pt-3'>MongoDB</h5>
                   </div>
                   <div className=''>
@@ -319,8 +320,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-full pt-16">
-            <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up'>Let&apos;s <span className='text-[#08c3d1]'>Connect</span></h3>
+          <div className="w-full pt-16" >
+            <h3 className='uppercase text-center mt-8 text-4xl font-semibold' data-aos='fade-up' id='contact'>Let&apos;s <span className='text-[#08c3d1]'>Connect</span></h3>
             <div className='grid place-items-center'>
 
               <div className="md:w-[50%] w-80 pt-16">
